@@ -1,0 +1,32 @@
+.container {
+  height: auto;
+  width: 80%;
+  //background: #eee;
+  margin: 30px auto;
+  position: relative;
+    border: 3px solid #ccc;
+}
+.image1 {
+width:60%;
+height:auto;
+float: right;
+//margin: 30px auto;
+//margin-left:-20px;
+}
+.image2{
+margin: 30px auto;
+//	position: absolute; /*relative;*/
+//	left:0;
+//	top:-40px;
+	width:50%;
+	height:auto;
+	    border: 3px solid #ccc;
+}
+
+.bottomDiv{
+
+       position:relative;
+       //bottom:150px;
+       left:0px;
+	 	top:0px;
+    }
