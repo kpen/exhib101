@@ -1,8 +1,3 @@
-var EColor=[]; //The array of elements color
-var NElements=[]; //the array of the names such as "polygons", "lines", "textes "
-var MElements=[]; //the array of the_arrays_of_points (I have to keep it in memory)=MEle[msss[[x,y],[x,y],[x,y]]]
-var Elements=[]; //all the drawn elements (as polylines, etc)
-var eLcount=0;
 
 var pictsnames = ['/static/common/imgs/img2379.JPG', '/static/common/imgs/img2348.JPG']
 var numbers = [0,0]
@@ -75,7 +70,16 @@ draw = SVG('drawing').size(wTH, hTH);
 */
 //-------------------------------------------------------
 function Vopen(step){
-/*clear the SVG-area*/	
+	
+var EColor=[]; //The array of elements color
+var NElements=[]; //the array of the names such as "polygons", "lines", "textes "
+var MElements=[]; //the array of the_arrays_of_points (I have to keep it in memory)=MEle[msss[[x,y],[x,y],[x,y]]]
+var Elements=[]; //all the drawn elements (as polylines, etc)
+var eLcount=0;
+
+	
+	draw.clear()
+
 	var data="prm1="+numbers[(step%2)]+"&prm0="+step%2
 			
     $.ajax({
@@ -133,18 +137,21 @@ var clock = 0
 var timm = null
 var opacity = 1
 var step =1
+//-----------------------------------------------------
 function tiktak() {
-	if (clock == 0) { Vopen(step++)/*load the next picture*/}
+	if (clock == 0) { opacity = 1; Vopen(step++)/*load the next picture*/}
 	else if (clock < 20) {/*just wait in the dark*/}
 	else if ((clock > 20)&&(clock < 100)) {
-		if (opacity > 0) {opacity+=-0.01; document.getElementById("cover").style.opacity = opacity}
+		if (opacity > 0) {opacity+=-0.08; document.getElementById("cover").style.opacity = opacity}
+		else{opacity=0}
 	}
 	else if (clock > 150) {
-		if (opacity <1 ) {opacity+=0.1; document.getElementById("cover").style.opacity = opacity}
+		if (opacity <1 ) {opacity+=0.5; document.getElementById("cover").style.opacity = opacity}
 	}
-	clock ++
+	clock+=5
+	console.log("opacity="+opacity)
 	if (clock >180) {clock = 0}
-timm = setTimeout(tiktak, 50)
+timm = setTimeout(tiktak, 250)
 }
 
-timm = setTimeout(tiktak, 50);
+timm = setTimeout(tiktak, 250);
